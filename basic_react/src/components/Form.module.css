@@ -1,0 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.parent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.heading {
+  margin-bottom: 30px;
+}
+
+.inner_box {
+  width: 38vw;
+  height: 76vh;
+  border: 1px solid #0000004d;
+  padding: 20px;
+}
