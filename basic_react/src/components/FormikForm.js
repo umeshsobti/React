@@ -12,15 +12,7 @@ const initialValues = {
   cpassword: "",
   date: "",
 };
-const CustomInput = ({ value, onClick }) => (
-  <input
-    type="text"
-    value={value}
-    onClick={onClick}
-    readOnly
-    placeholder="Select Date"
-  />
-);
+
 const validate = (values) => {
   const errors = {};
   if (!values.name) {
@@ -38,7 +30,7 @@ const validate = (values) => {
 
   if (!values.age) {
     errors.age = "Required";
-  } else if (!/^[0-9]{1,2}$/.test(values.age) || parseInt(values.age) < 18) {
+  } else if (!/^[0-9]{1,2}$/.test(values.age) || parseInt(values.age) > 18) {
     errors.age = "Invalid Age Format or Age exceed 18.";
   }
   if (!values.phone) {
@@ -61,6 +53,10 @@ const validate = (values) => {
   } else if (values.password !== values.cpassword) {
     errors.cpassword = "Confirm password does not match with password";
   }
+
+  if(!values.date){
+    errors.date = "Required";
+  } 
   return errors;
 };
 function FormFormik() {
@@ -73,6 +69,22 @@ function FormFormik() {
   });
 
   const[startDate , setStartDate] = useState(new Date())
+  const CustomInput = ({ value, onClick }) => (
+    <input
+      type="text"
+      value={value}
+      onClick={onClick}
+      readOnly
+      placeholder="Select Date"
+    />
+  );
+  function handleDateChange(date) {
+    if (date > new Date()) {
+      setStartDate(new Date());
+    } else {
+      setStartDate(date);
+    }
+  }
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -145,7 +157,7 @@ function FormFormik() {
         ) : null}
         <br /> <br />
         <label htmlFor="date">Date: </label>
-        <DatePicker selected={startDate} onChange={(date)=> setStartDate(date)} customInput={<CustomInput />}></DatePicker>
+        <DatePicker selected={startDate} onChange={handleDateChange} customInput={<CustomInput />}></DatePicker>
         <button type="submit">Submit</button>
       </form>
     </div>
