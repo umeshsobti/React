@@ -1,4 +1,8 @@
 import { useFormik } from "formik";
+import { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 const initialValues = {
   name: "",
   email: "",
@@ -8,7 +12,15 @@ const initialValues = {
   cpassword: "",
   date: "",
 };
-
+const CustomInput = ({ value, onClick }) => (
+  <input
+    type="text"
+    value={value}
+    onClick={onClick}
+    readOnly
+    placeholder="Select Date"
+  />
+);
 const validate = (values) => {
   const errors = {};
   if (!values.name) {
@@ -59,6 +71,8 @@ function FormFormik() {
       console.log(values);
     },
   });
+
+  const[startDate , setStartDate] = useState(new Date())
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -130,14 +144,8 @@ function FormFormik() {
           <div style={{ color: "red" }}>{errors.cpassword}</div>
         ) : null}
         <br /> <br />
-        <input
-          type="date"
-          name="date"
-          value={values.date}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          
-        />
+        <label htmlFor="date">Date: </label>
+        <DatePicker selected={startDate} onChange={(date)=> setStartDate(date)} customInput={<CustomInput />}></DatePicker>
         <button type="submit">Submit</button>
       </form>
     </div>
