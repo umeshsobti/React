@@ -1,6 +1,7 @@
 import Form from "./components/Form.js";
 import FormFormik from "./components/FormikForm.js";
 import Home from "./components/Home.js";
+import FetchDetails from "./components/FetchDetails.js";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 function App() {
   return (
@@ -16,6 +17,9 @@ function App() {
               </li>
               <li>
                 <Link to="/formik">Formik Form</Link>
+              </li>
+              <li>
+                <Link to="/json">Fetch Details From Json</Link>
               </li>
             </ul>
           </nav>
@@ -35,6 +39,7 @@ function App() {
             }
           ></Route>
           <Route path="/formik" element={<FormFormik />}></Route>
+          <Route path="/json" element={<FetchDetails/>}></Route>
         </Routes>
       </Router>
   );

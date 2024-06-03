@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "name": "umesh",
+        "email": "umesh@trigvent.com",
+        "age": 22,
+        "phone": "9813080816"
+    },
+    {
+        "id": 2,
+        "name": "keshav",
+        "email": "keshav@trigvent.com",
+        "age": 21,
+        "phone": "9876543212"
+    },
+    {
+        "id": 3,
+        "name": "raghav",
+        "email": "raghav@trigvent.com",
+        "age": 20,
+        "phone": "9789123456"
+    }
+]
