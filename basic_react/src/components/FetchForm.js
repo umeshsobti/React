@@ -1,10 +1,10 @@
 import { useState } from "react"
 import axios from "axios"
 function FetchForm(){
-    const [name,setName] = useState();
-    const [email,setEmail] = useState();
-    const [age,setAge] = useState();
-    const [phone,setPhone] = useState();
+        const [name,setName] = useState();
+        const [email,setEmail] = useState();
+        const [age,setAge] = useState();
+        const [phone,setPhone] = useState();
     function postData(e){
             e.preventDefault()        
             axios.post("user.json", {
