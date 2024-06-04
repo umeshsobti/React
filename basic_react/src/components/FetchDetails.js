@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import FetchForm from "./FetchForm";
 
 function FetchDetails() {
   const [data, setData] = useState([]);
@@ -30,7 +31,7 @@ function FetchDetails() {
 
   return (
     <div>
-      <button className="btn btn-primary">Create one More Field</button>
+      <FetchForm/>
       <table className="table">
         <thead>
           <tr key="">
