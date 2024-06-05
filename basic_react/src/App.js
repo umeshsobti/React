@@ -1,11 +1,17 @@
-import Form from "./components/Form.js";
-import FormFormik from "./components/FormikForm.js";
-import Home from "./components/Home.js";
-import FetchDetails from "./components/FetchDetails.js";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import HooksForm from "./components/HooksForm.js";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import Home from './components/Home';
+import Form from './components/Form';
+import FormFormik from './components/FormikForm';
+import FetchDetails from './components/FetchDetails';
+import HooksForm from './components/HooksForm';
+import ThemeProject from './components/ThemeProject';
+import { ThemeProvider } from './ThemeContext';
+import './App.css';
+
 function App() {
   return (
+    <ThemeProvider>
       <Router>
         <main>
           <nav>
@@ -25,28 +31,34 @@ function App() {
               <li>
                 <Link to="/hookform">Form Using Hooks</Link>
               </li>
+              <li>
+                <Link to="/theme">Theme Project</Link>
+              </li>
             </ul>
           </nav>
         </main>
         <Routes>
-        <Route path="/" element={<Home></Home>} />
+          <Route path="/" element={<Home />} />
           <Route
             path="/form"
             element={
               <Form
                 style={{
-                  margin: "0",
-                  padding: "0",
-                  boxSizing: "border-box",
+                  margin: '0',
+                  padding: '0',
+                  boxSizing: 'border-box',
                 }}
               />
             }
-          ></Route>
-          <Route path="/formik" element={<FormFormik />}></Route>
-          <Route path="/json" element={<FetchDetails/>}></Route>
-          <Route path="/hookform" element={<HooksForm/>}></Route>
+          />
+          <Route path="/formik" element={<FormFormik />} />
+          <Route path="/json" element={<FetchDetails />} />
+          <Route path="/hookform" element={<HooksForm />} />
+          <Route path="/theme" element={<ThemeProject />} />
         </Routes>
       </Router>
+    </ThemeProvider>
   );
 }
+
 export default App;
